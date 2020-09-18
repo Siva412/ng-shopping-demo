@@ -1,0 +1,22 @@
+.login-form{
+    width: 40%;
+    margin: auto;
+}
+.login-card {
+    padding: 30px;
+}
+.login-form-field {
+    width: 100%;
+    margin-bottom: 10px;
+}
+.sign-up{
+    margin-top: 15px;;
+}
+.sign-up > a{
+    cursor: pointer;
+}
+@media only screen and (max-width: 600px){
+    .login-form{
+        width: 80%;
+    }
+}

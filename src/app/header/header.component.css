@@ -1,0 +1,22 @@
+.home-icon{
+    margin-right: 10px;
+    cursor: pointer;
+}
+.cart-ic{
+    position: relative;
+    margin-right: 20px;
+    cursor: pointer;
+}
+.cart-count{
+    width: 18px;
+    height: 18px;
+    line-height: 18px;
+    border-radius: 100%;
+    font-size: 13px;
+    text-align: center;
+    background: #fff;
+    color: #000;
+    position: absolute;
+    top: -10px;
+    left: 21px;
+}

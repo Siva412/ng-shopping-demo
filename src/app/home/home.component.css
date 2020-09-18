@@ -1,0 +1,27 @@
+.search-block{
+    width: 100%;
+    /* float: right; */
+    margin-right: 10px;
+}
+.home-route{
+    clear: both;
+}
+.search-field{
+    width: 100%;
+}
+.search-icon{
+    background-color: #3f51b5;
+    position: absolute;
+    top: -37px;
+    left: -39px;
+    height: 50px;
+    width: 49px;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+}
+.search-icon mat-icon{
+    color: white;
+    margin: auto;
+    font-size: 28px;
+    line-height: 50px;
+}

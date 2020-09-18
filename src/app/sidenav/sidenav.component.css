@@ -1,0 +1,25 @@
+.app-sidenav{
+    min-width: 30vw;
+}
+.app-sidenav > div{
+    padding: 5px 15px;
+}
+.sidenav-link > span, .profile-info > span{
+    vertical-align: super;
+}
+.sidenav-link{
+    cursor: pointer;
+}
+.sidenav-link:hover{
+    background-color: #eee;
+}
+.app-sidenav .profile-info{
+    background-color: #000;
+    color: #fff;
+    padding: 10px;
+}
+.menu-arrow{
+    float: right;
+    font-size: 15px;
+    line-height: 22px;
+}

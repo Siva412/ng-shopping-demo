@@ -1,0 +1,21 @@
+<div class="app-sidenav">
+    <div class="profile-info">
+        <mat-icon color="primary" class="margin-right10">person</mat-icon>
+        <span>Welcome {{userName | uppercase}}</span>
+    </div>
+    <div class="sidenav-link" (click)="navigateTo('home')">
+        <mat-icon color="primary" class="margin-right10">home</mat-icon>
+        <span>Home</span>
+        <mat-icon color="primary" class="menu-arrow">arrow_forward_ios</mat-icon>
+    </div>
+    <div class="sidenav-link" (click)="navigateTo('orders')">
+        <mat-icon color="primary" class="margin-right10">history</mat-icon>
+        <span>Orders</span>
+        <mat-icon color="primary" class="menu-arrow">arrow_forward_ios</mat-icon>
+    </div>
+    <div class="sidenav-link" (click)="navigateTo('')">
+        <mat-icon color="primary" class="margin-right10">logout</mat-icon>
+        <span>Logout</span>
+        <mat-icon color="primary" class="menu-arrow">arrow_forward_ios</mat-icon>
+    </div>
+</div>

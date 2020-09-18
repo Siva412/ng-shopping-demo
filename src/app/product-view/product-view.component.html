@@ -1,0 +1,33 @@
+<div class="prodview-container">
+    <div class="img-div">
+        <img src="{{prodData?.url}}" />
+    </div>
+    <div class="prod-cnt">
+        <h1>{{prodData.name}}</h1>
+        <div class="crncy">{{prodData.price | currency:"INR":"symbol"}}</div>
+        <div>
+            <app-rating [value]="prodData.rating"></app-rating>
+            <span class="prod-reviews">{{prodData.ratingCount}} ratings</span>
+        </div>
+        <hr >
+        <div>
+            <div class="prod-dtls">Details</div>
+            <ul>
+                <li *ngFor="let desc of prodData.description">{{desc}}</li>
+            </ul>
+        </div>
+        <hr />
+        <div>
+            <mat-form-field appearance="outline">
+                <mat-label>Quantity</mat-label>
+                <mat-select [(ngModel)]="selectedQty">
+                    <mat-option *ngFor="let count of quantity" [value]="count">{{count}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="btn-grp">
+            <button mat-raised-button color="primary" (click)="buyNow()">Buy now</button>
+            <button mat-raised-button (click)="addToCart()">Add to cart <mat-icon>shopping_cart</mat-icon></button>
+        </div>
+    </div>
+</div>

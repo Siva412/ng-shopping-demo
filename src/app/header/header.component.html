@@ -1,0 +1,8 @@
+<mat-toolbar color="primary">
+    <mat-icon class="home-icon" (click)="menuClick()" *ngIf="isLoginIn">menu</mat-icon>
+    <span class="csrptr" (click)="gotoHome()">E Shopping</span>
+    <span class="spacer"></span>
+    <span *ngIf="cartFlag" class="cart-ic" (click)="gotoCart()"><mat-icon>shopping_cart</mat-icon><span class="cart-count">{{cartItems}}</span></span>
+    <!-- <mat-icon [matBadge]="cartItems">shopping_cart</mat-icon> -->
+    <mat-icon *ngIf="isLoginIn" (click)="logout()" class="csrptr">logout</mat-icon>
+</mat-toolbar>

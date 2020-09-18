@@ -1,0 +1,61 @@
+<div class="register-body">
+    <mat-card class="regForm-card mat-elevation-z6">
+        <mat-card-title>Create your account</mat-card-title>
+        <mat-card-content class="regForm-content">
+            <form [formGroup]="regForm" (ngSubmit)="registerSubmit()">
+                <div class="row margin-bottom45">
+                    <mat-form-field class="register-form-field col-md-6 col-xs-12">
+                        <mat-label>First name</mat-label>
+                        <input type="text" formControlName="firstName" matInput />
+                        <mat-error>
+                            <span *ngIf="regForm.get('firstName').errors?.required">Please enter First name</span>
+                            <span *ngIf="regForm.get('firstName').errors?.pattern">Please enter alphanumeric</span>
+                            <span *ngIf="regForm.get('firstName').errors?.maxlength">Please enter less than 40 characters</span>
+                        </mat-error>
+                    </mat-form-field>
+                    <mat-form-field class="register-form-field col-md-6 col-xs-12">
+                        <mat-label>Last name (optional)</mat-label>
+                        <input type="text" formControlName="lastName" matInput />
+                        <mat-error>
+                            <span *ngIf="regForm.get('lastName').errors?.pattern">Please enter alphanumeric</span>
+                            <span *ngIf="regForm.get('lastName').errors?.maxlength">Please enter less than 40 characters</span>
+                        </mat-error>
+                    </mat-form-field>
+                    <mat-form-field class="register-form-field col-md-6 col-xs-12">
+                        <mat-label>Email</mat-label>
+                        <input type="text" formControlName="email" matInput />
+                        <mat-error>
+                            <span *ngIf="regForm.get('email').errors?.required">Please enter Email</span>
+                            <span *ngIf="regForm.get('email').errors?.email">Please enter a valid email</span>
+                        </mat-error>
+                    </mat-form-field>
+                    <mat-form-field class="register-form-field col-md-6 col-xs-12">
+                        <mat-label>Mobile number</mat-label>
+                        <span matPrefix>+91 &nbsp;</span>
+                        <input type="text" formControlName="mobile" matInput mobileValid />
+                        <mat-error>
+                            <span *ngIf="regForm.get('mobile').errors?.required">Please enter a mobile number</span>
+                            <span *ngIf="regForm.get('mobile').errors?.pattern">Please enter a valid mobile number</span>
+                        </mat-error>
+                    </mat-form-field>
+                    <mat-form-field class="register-form-field col-md-6 col-xs-12">
+                        <mat-label>Password</mat-label>
+                        <input [type]="hide?'password':'text'" formControlName="password" matInput />
+                        <mat-icon matSuffix (click)="hide=!hide" class="csrptr">{{hide?'visibility_off':'visibility'}}</mat-icon>
+                        <mat-hint *ngIf="regForm.get('password').pristine">Password should contain atleast one Uppercase, Lowercase and number with minimum 8 characters</mat-hint>
+                        <mat-error>
+                            <span *ngIf="regForm.get('password').errors?.required">Please enter password</span>
+                            <span *ngIf="regForm.get('password').errors?.pattern">Password should contain atleast Uppercase, Lowercase and number with minimum 8 characters</span>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="err-msg">{{regErr}}</div>
+                <div class="btn-grp">
+                    <button mat-raised-button color="primary">Submit</button>
+                    <button type="button" mat-raised-button (click)="gotoLogin()">Cancel</button>
+                </div>
+            </form>
+        </mat-card-content>
+    </mat-card>
+</div>
+<app-loader *ngIf="loader"></app-loader>

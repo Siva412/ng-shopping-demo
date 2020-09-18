@@ -1,0 +1,12 @@
+<div class="prod-item">
+    <img src="{{product.url}}"/>
+    <div>
+        {{product.name}}
+    </div>
+    <div>
+        <app-rating [value]="product.rating" [count]="product.ratingCount"></app-rating>
+    </div>
+    <div>
+        Price: {{product.price | currency:"INR":"symbol"}}
+    </div>
+</div>

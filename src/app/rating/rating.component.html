@@ -1,0 +1,4 @@
+<span [matTooltip]="ratingValue+'/5'" matTooltipPosition="right">
+<mat-icon color="primary" class="prod-rating" *ngFor="let item of rating">{{ratingValue<item?'star_outline':'star'}}</mat-icon>
+<span *ngIf="ratingCount" class="rating-count">({{ratingCount}})</span>
+</span>

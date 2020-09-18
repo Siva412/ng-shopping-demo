@@ -1,0 +1,33 @@
+.prodview-container{
+    padding: 0 20px;
+    display: flex;
+    justify-content: flex-start;
+}
+.img-div{
+    padding: 0 15px;
+    flex: 1 0 200px;
+}
+.img-div img{
+    width: 100%;
+}
+.prod-cnt{
+    flex-grow: 1;
+    padding: 0 15px;
+}
+.prod-reviews{
+    vertical-align: top;
+    margin-left: 10px;
+}
+.crncy{
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+.prod-dtls{
+    font-size: 16px;
+    font-weight: 400;
+}
+@media only screen and (max-width: 600px){
+    .prodview-container{
+        flex-wrap: wrap;
+    }
+}

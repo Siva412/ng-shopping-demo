@@ -1,0 +1,32 @@
+<div class="filter-list" *ngIf="filterData">
+    <div class="filter-item">
+        <div class="title">Customer review</div>
+        <div class="rating-blk" *ngFor="let rating of filterData?.rating | quantArray" (click)="selectRating(rating)" [ngStyle]="{'font-weight': (selectedFilter.rating === rating)?600:400}">
+            <app-rating [value]="rating"></app-rating>
+            <span class="v-align-top margin-left10">&up</span>
+        </div>
+        <div (click)="clearRating()" class="csrptr">clear</div>
+    </div>
+    <div class="filter-item" *ngFor="let item of filterData?.filters">
+        <div class="title">{{item.filterType}}</div>
+        <div *ngFor="let val of item.filterValues">
+            <mat-checkbox color="primary" [(ngModel)]="checkboxData[item.filterType+val]" (change)="selectionChange(item.filterType, val, $event)">{{val}}</mat-checkbox>
+        </div>
+    </div>
+    <div class="filter-item">
+        <div class="title">Amount</div>
+        <div class="amount-filter">
+            <mat-form-field appearance="outline">
+                <input type="text" placeholder="₹ Min" [(ngModel)]="amountLimit.min" matInput>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <input type="text" placeholder="₹ Max" [(ngModel)]="amountLimit.max" matInput>
+            </mat-form-field>
+        </div>
+        <div class="btn-grp margin0">
+            <button mat-flat-button color="primary" (click)="search()">Search</button>
+            <button mat-raised-button (click)="clear()">Clear</button>
+        </div>
+    </div>
+</div>
+<div *ngIf="!filterData">Please try again</div>

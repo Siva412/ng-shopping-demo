@@ -1,0 +1,104 @@
+<div>
+  <mat-horizontal-stepper [linear]="true" #stepper>
+    <mat-step [stepControl]="addressForm" label="Address Details">
+      <form [formGroup]="addressForm">
+        <div class="row">
+          <mat-form-field class="col-md-4 col-xs-12">
+            <mat-label>Name</mat-label>
+            <input matInput placeholder="Name" formControlName="name">
+            <mat-error>
+              <span *ngIf="addressForm.get('name').errors?.required">Please enter name</span>
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field class="col-md-4 col-xs-12">
+            <mat-label>Address Line 1</mat-label>
+            <input matInput placeholder="Address Line 1" formControlName="address1">
+            <mat-error>
+              <span *ngIf="addressForm.get('address1').errors?.required">Please enter Address</span>
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field class="col-md-4 col-xs-12">
+            <mat-label>Address Line 2 (Optional)</mat-label>
+            <input matInput placeholder="Address Line 2 (Optional)" formControlName="address2">
+          </mat-form-field>
+          <mat-form-field class="col-md-4 col-xs-12">
+            <mat-label>City</mat-label>
+            <input matInput placeholder="City" formControlName="city">
+            <mat-error>
+              <span *ngIf="addressForm.get('city').errors?.required">Please enter City</span>
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field class="col-md-4 col-xs-12">
+            <mat-label>Pincode</mat-label>
+            <input matInput placeholder="Pincode" formControlName="pincode" pincodeValid>
+            <mat-error>
+              <span *ngIf="addressForm.get('pincode').errors?.required">Please enter Pincode</span>
+              <span *ngIf="addressForm.get('pincode').errors?.pattern">Please enter valid Pincode</span>
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field class="col-md-4 col-xs-12">
+            <mat-label>Mobile number</mat-label>
+            <span matPrefix>+91 &nbsp;</span>
+            <input matInput placeholder="Mobile" formControlName="mobile" mobileValid>
+            <mat-error>
+              <span *ngIf="addressForm.get('mobile').errors?.required">Please enter Mobile</span>
+              <span *ngIf="addressForm.get('mobile').errors?.pattern">Please enter valid Mobile</span>
+            </mat-error>
+          </mat-form-field>
+          <div class="col-md-12 btn-grp">
+            <button mat-raised-button color="primary" matStepperNext (click)="addressSubmitted()">Next</button>
+          </div>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [completed]="cartItems?.length>0">
+      <ng-template matStepLabel>Confirmation</ng-template>
+      <div class="address-blk">
+      <mat-card class="mat-elevation-z6">
+        <h2>Cart Items</h2>
+        <div *ngFor="let item of cartItems" class="row confirm-item">
+          <div class="col-md-4">
+            <img src="{{item.url}}" />
+          </div>
+          <div class="col-md-8">
+            <h2>{{item.name}}</h2>
+            <div>Quantity: <span class="sel-qt">{{item.selectedQuantity}}</span></div>
+            <div class="crncy-confirm">{{item.price | currency:"INR":"symbol"}}</div>
+          </div>
+        </div>
+        <div *ngIf="!cartItems || cartItems?.length==0">No Items</div>
+      </mat-card>
+      <mat-card class="mat-elevation-z6">
+        <h2>Price Details</h2>
+        <div>Price ({{cartItems.length}} items): <span class="crncy-confirm">{{itemsPrice | currency:"INR":"symbol"}}</span></div>
+        <div>Delivery charges: <span class="crncy-confirm">{{deliveryCharges | currency:"INR":"symbol"}}</span></div>
+        <hr />
+        <div>Total Price: <span class="crncy-confirm">{{(itemsPrice+deliveryCharges) | currency:"INR":"symbol"}}</span></div>
+      </mat-card>
+      <mat-card class="mat-elevation-z6">
+        <h2>Address Details</h2>
+        <div>
+          {{addressString}}
+        </div>
+      </mat-card>
+    </div>
+      <div class="btn-grp">
+        <button mat-raised-button matStepperPrevious>Back</button>
+        <button mat-raised-button color="primary" matStepperNext>Next</button>
+      </div>
+    </mat-step>
+    <mat-step [stepControl]="paymentForm" label="Payment Details">
+      <form [formGroup]="paymentForm">
+        <div>Payment options</div>
+        <mat-radio-group formControlName="paymentType" color="primary">
+          <mat-radio-button value="card">Card</mat-radio-button>
+          <mat-radio-button value="cash">Cash on Delivery</mat-radio-button>
+        </mat-radio-group>
+        <div class="btn-grp">
+          <button mat-raised-button matStepperPrevious>Back</button>
+          <button mat-raised-button color="primary" (click)="confirm()">Confirm</button>
+        </div>
+      </form>
+    </mat-step>
+  </mat-horizontal-stepper>
+</div>

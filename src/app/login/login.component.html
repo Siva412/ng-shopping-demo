@@ -1,0 +1,29 @@
+<div class="login-form">
+    <mat-card class="login-card mat-elevation-z6">
+        <mat-card-content>
+            <form #loginForm="ngForm" (ngSubmit)="loginSubmit(loginForm)">
+                <mat-form-field class="login-form-field">
+                    <mat-label>Username</mat-label>
+                    <input type="text" name="username" matInput ngModel #username="ngModel" required />
+                    <mat-error *ngIf="username?.errors?.required">Please enter username</mat-error>
+                </mat-form-field>
+                <mat-form-field class="login-form-field">
+                    <mat-label>Password</mat-label>
+                    <input type="password" name="password" matInput ngModel #password="ngModel" required />
+                    <mat-error *ngIf="password?.errors?.required">Please enter password</mat-error>
+                </mat-form-field>
+                <button mat-raised-button color="primary">Login</button>
+            </form>
+            <div class="err-msg">
+                {{loginErr}}
+            </div>
+            <div class="sign-up">
+                <a [routerLink]="['/register']">Sign Up</a>
+            </div>
+            <div class="sign-up">
+                <a [routerLink]="['/home']">Start shopping without sign in</a>
+            </div>
+        </mat-card-content>
+    </mat-card>
+</div>
+<app-loader *ngIf="loader"></app-loader>

@@ -1,0 +1,30 @@
+:host{
+    /*flex: 1 0 200px;*/
+    flex: 0 1 0px;
+    border-right: 1px solid #ccc;
+}
+.amount-filter mat-form-field{
+    width: 40%;
+    margin: 0 5px;
+}
+.filter-item{
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ccc;
+}
+.filter-item:last-child{
+    border-bottom: none;
+}
+.filter-item .title{
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+.rating-blk{
+    margin-right: 75px;
+    padding-top: 6px;
+    padding-left: 4px;
+    cursor: pointer;
+}
+.rating-blk:hover{
+    font-weight: 800;
+}

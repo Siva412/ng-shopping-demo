@@ -1,0 +1,22 @@
+.scroll-top{
+    position: fixed;
+    bottom: 50px;
+    right: 50px;
+    z-index: 5;
+    opacity: 0;
+    cursor: pointer;
+    transition: all .2s ease-in-out;
+}
+.scroll-top mat-icon{
+    color: white;
+}
+.scrolled{
+    opacity: 1;
+    transition: all .2s ease-in-out;
+}
+.top-outline{
+    background-color: #3f51b5;
+    border-radius: 50%;
+    border: 1px solid grey;
+    padding: 16px 10px 10px 10px;
+}

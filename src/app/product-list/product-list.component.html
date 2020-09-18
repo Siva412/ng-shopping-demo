@@ -1,0 +1,19 @@
+<div class="filter-xs">
+    <button mat-raised-button (click)="openFilter()" color="primary">Filter</button>
+    <hr />
+</div>
+<div class="prod-container">
+    <app-prodfilter [filterData]="filterData" (filterEvt)="searchData($event)"></app-prodfilter>
+    <div class="prod-list" *ngIf="productList?.length>0">
+        <app-product-item *ngFor="let item of productList" [product]="item" (click)="viewProduct(item)">
+        </app-product-item>
+        <div class="grid-adjust"></div>
+        <div class="grid-adjust"></div>
+        <div class="grid-adjust"></div>
+    </div>
+    <div class="prod-list" *ngIf="productList?.length===0">
+        No search results found
+    </div>
+</div>
+<app-loader *ngIf="loader"></app-loader>
+<app-scroll-top></app-scroll-top>

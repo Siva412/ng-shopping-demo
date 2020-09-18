@@ -1,0 +1,19 @@
+.cart-body{
+    width: 80%;
+    margin: auto;
+}
+.cart-img{
+    max-width: 100%;
+    height: 100px;
+}
+/* .cart-content{
+    width: 80%;
+    margin: auto;
+} */
+.cart-item{
+    padding: 30px;
+    margin-bottom: 15px;
+}
+.cart-crncy{
+    font-size: 18px;
+}

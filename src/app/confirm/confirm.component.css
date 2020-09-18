@@ -1,0 +1,24 @@
+.mat-radio-button ~ .mat-radio-button {
+    margin-left: 16px;
+  }
+  .confirm-item{
+    margin-bottom: 10px;
+    border-bottom: 1px solid #ccc
+  }
+  .confirm-item img{
+    max-width: 300px;
+    height: auto;
+    width: 100%;
+  }
+  .confirm-item:last-child{
+    border-bottom: none;
+  }
+  .address-blk mat-card{
+    margin-bottom: 15px;
+  }
+  .crncy-confirm{
+    font-size: 18px;
+  }
+  .sel-qt{
+    font-weight: 400;
+  }

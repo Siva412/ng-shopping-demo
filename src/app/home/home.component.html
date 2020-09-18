@@ -1,0 +1,13 @@
+<div class="app-home">
+    <div class="search-block">
+        <mat-form-field appearance="outline" class="search-field">
+            <input matInput type="text" placeholder="Search"(keypress)="searchKeypress($event)" #searchText />
+            <span matSuffix class="search-icon" (click)="searchItem(searchText.value)">
+                <mat-icon>search</mat-icon>
+            </span>
+        </mat-form-field>
+    </div>
+    <div class="home-route">
+        <router-outlet></router-outlet>
+    </div>
+</div>

@@ -1,0 +1,53 @@
+.prod-container{
+    display: flex;
+}
+/* .filter-list{
+    flex: 1 0 200px;
+    border-right: 1px solid #ccc;
+} */
+.prod-list{
+    flex-grow: 3;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.prod-list::after{
+    content: '';
+    flex: 0 0 480px;
+}
+.filter-item{
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ccc;
+}
+.filter-item:last-child{
+    border-bottom: none;
+}
+.filter-item .title{
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+::ng-deep mat-checkbox .mat-checkbox-label{
+    font-weight: 500;
+}
+.amount-filter mat-form-field{
+    width: 40%;
+    margin: 0 5px;
+}
+.grid-adjust{
+    flex: 0 0 400px;
+    height: 0;
+}
+.filter-xs{
+    margin: 10px 0;
+}
+@media only screen and (min-width: 600px){
+    .filter-xs{
+        display: none;
+    }
+}
+@media only screen and (max-width: 600px){
+    app-prodfilter{
+        display: none;
+    }
+}
