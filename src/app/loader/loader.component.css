@@ -8,7 +8,8 @@
     z-index: 99;
 }
 mat-spinner{
-    top: 35%;
-    left: 47%;
+    position: absolute;
+    top: 150px;
+    left: 47vw;
     z-index: 999;
 }

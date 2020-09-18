@@ -1,8 +1,8 @@
-:host{
-    /*flex: 1 0 200px;*/
+/* :host{
+    /*flex: 1 0 200px;
     flex: 0 1 0px;
     border-right: 1px solid #ccc;
-}
+} */
 .amount-filter mat-form-field{
     width: 40%;
     margin: 0 5px;

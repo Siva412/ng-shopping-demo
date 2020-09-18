@@ -41,13 +41,17 @@
 .filter-xs{
     margin: 10px 0;
 }
+.prod-filter{
+    flex: 0 1 0px;
+    border-right: 1px solid #ccc;
+}
 @media only screen and (min-width: 600px){
     .filter-xs{
         display: none;
     }
 }
 @media only screen and (max-width: 600px){
-    app-prodfilter{
+    .prod-filter{
         display: none;
     }
 }

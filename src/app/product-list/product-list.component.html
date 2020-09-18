@@ -3,7 +3,9 @@
     <hr />
 </div>
 <div class="prod-container">
-    <app-prodfilter [filterData]="filterData" (filterEvt)="searchData($event)"></app-prodfilter>
+    <div class="prod-filter">
+        <app-prodfilter [filterData]="filterData" (filterEvt)="searchData($event)"></app-prodfilter>
+    </div>
     <div class="prod-list" *ngIf="productList?.length>0">
         <app-product-item *ngFor="let item of productList" [product]="item" (click)="viewProduct(item)">
         </app-product-item>

@@ -8,7 +8,7 @@
     height: 253px;
 }
 :host{
-    flex: 0 0 400px;
+    flex: 0 1 400px;
     cursor: pointer;
     margin-bottom: 15px;
     padding: 0 15px;

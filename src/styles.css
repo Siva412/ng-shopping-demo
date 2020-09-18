@@ -43,7 +43,9 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     font-size: 12px;
     margin-top: 10px;
 }
-
+.clear-both{
+    clear: both;
+}
 @media only screen and (max-width: 600px){
     .btn-grp button{
         width: 100%;
