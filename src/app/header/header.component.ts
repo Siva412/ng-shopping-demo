@@ -12,6 +12,7 @@ export class HeaderComponent implements OnInit {
   cartItems: number = 0;
   isLoginIn: boolean = false;
   cartFlag: boolean = false;
+  loginPageFlag: boolean = false;
   constructor(private commonService: CommonService, private router: Router) { }
 
   ngOnInit(): void {
@@ -25,7 +26,11 @@ export class HeaderComponent implements OnInit {
     })
     this.router.events.subscribe(event => {
       if(event instanceof NavigationEnd){
+        this.loginPageFlag = false;
         if(event.url === '/' || event.url === '/register'){
+          if(event.url === '/'){
+            this.loginPageFlag = true
+          }
           this.cartFlag = false;
         }
         else{
@@ -46,5 +51,8 @@ export class HeaderComponent implements OnInit {
   logout() {
     this.commonService.userLoggedOut();
     this.router.navigate(['']);
+  }
+  doLogin(){
+    this.router.navigate([''])
   }
 }

@@ -1,6 +1,6 @@
 <mat-card class="mat-elevation-z6">
     <h2>Order History</h2>
-    <div *ngFor="let item of historyItems" class="row confirm-item">
+    <div *ngFor="let item of historyItems; let i = index" class="row confirm-item">
         <div class="col-md-4">
             <img src="{{item.url}}" />
         </div>
@@ -14,7 +14,7 @@
             </div>
         </div>
         <div class="col-md-12 margin-top10">
-            <mat-expansion-panel>
+            <mat-expansion-panel [expanded]="i==0">
                 <mat-expansion-panel-header>
                     Order status
                 </mat-expansion-panel-header>
@@ -44,3 +44,4 @@
         
     <!-- </mat-accordian> -->
 </mat-card>
+<app-loader *ngIf="loader"></app-loader>

@@ -14,7 +14,8 @@ export class ConfirmComponent implements OnInit {
   cartItems: any;
   itemsPrice: number;
   deliveryCharges: number = 0;
-  addressString: string = ''
+  addressString: string = '';
+  loader: boolean = false;
   constructor(private fb: FormBuilder, private commonService: CommonService, private router: Router) { }
 
   ngOnInit(): void {
@@ -30,9 +31,15 @@ export class ConfirmComponent implements OnInit {
     this.paymentForm = this.fb.group({
       "paymentType": ['card']
     });
-    this.cartItems = [...this.commonService.getTotalItems()];
+    if(this.commonService.purchaseItems?.length > 0){
+      this.cartItems = [...this.commonService.purchaseItems];
+    }
+    else{
+      this.cartItems = [...this.commonService.getTotalItems()];
+    }
     this.itemsPrice = this.commonService.itemsPrice();
     this.itemsPrice >= 1000 ? this.deliveryCharges = 50 : null;
+    this.commonService.purchaseItems = [];
   }
   addressSubmitted() {
     this.addressString = "";
@@ -53,12 +60,15 @@ export class ConfirmComponent implements OnInit {
         price: item.price
       }
     })
+    this.loader = true;
     this.commonService.makeApiCall('/api/products/purchase', 'POST', { orderList }).subscribe((res: any) => {
+      this.loader = false;
       if (res.errorcode === 0) {
         this.commonService.clearCart();
         this.router.navigate(['orders']);
       }
     }, (err) => {
+      this.loader = false;
       console.log(err);
     })
   }

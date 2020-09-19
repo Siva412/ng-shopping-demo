@@ -11,14 +11,19 @@ import { URL } from '../../environments/environment';
 export class OrdersComponent implements OnInit {
   cartItems:any = [];
   historyItems:any = [];
+  loader:boolean = true;
   constructor(private commonService: CommonService) { }
 
   ngOnInit(): void {
     this.cartItems = [...this.commonService.getTotalItems()];
+    this.loader = true;
     this.commonService.makeApiCall('/api/products/purchaseHistory', 'GET').subscribe((data:any) => {
+      this.loader = false;
       if(data.errorcode === 0){
         this.historyItems = data.historyList.map(item => ({...item, url: `${URL}/api/products/img/${item.id}`}));
       }
+    }, (err) => {
+      this.loader = false;
     })
   }
 

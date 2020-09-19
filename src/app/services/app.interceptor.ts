@@ -5,11 +5,13 @@ import { Observable } from 'rxjs';
 @Injectable()
 export class AppInterceptor implements HttpInterceptor {
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-        req = req.clone({
-            setHeaders:{
-                "Authorisation": "Bearer "+sessionStorage.getItem('token')
-            }
-        })        
+        if (sessionStorage.getItem('token')) {
+            req = req.clone({
+                setHeaders: {
+                    "Authorization": "Bearer " + sessionStorage.getItem('token')
+                }
+            })
+        }
         return next.handle(req);
     }
 }
