@@ -15,7 +15,8 @@ export class CommonService {
     public purchaseItems: any = [];
     private loginFlag: boolean = false;
     private loginSubject = new Subject();
-    private searchSubject = new BehaviorSubject({propagate: true, value: ''});
+    private searchSubject = new Subject();
+    private searchString = '';
     public userInfo: any;
     public navigateTo: string = '';
     onServiceLoad() {
@@ -97,9 +98,15 @@ export class CommonService {
         this.loginSubject.next(this.loginFlag);
     }
     getSearchObs(){
-        return this.searchSubject.asObservable().pipe(filter(data => data.propagate));
+        return this.searchSubject.asObservable();
     }
     getSearchSubject(){
         return this.searchSubject;
+    }
+    getSearchString(){
+        return this.searchString;
+    }
+    setSearchString(str: string){
+        this.searchString = str;
     }
 }

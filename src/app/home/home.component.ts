@@ -15,7 +15,8 @@ export class HomeComponent implements OnInit {
   }
   searchItem(value) {
     if (value) {
-      this.commonService.getSearchSubject().next({propagate: true, value});
+      this.commonService.setSearchString(value);
+      this.commonService.getSearchSubject().next(value);
       this.router.navigate(['home']);
     }
   }
