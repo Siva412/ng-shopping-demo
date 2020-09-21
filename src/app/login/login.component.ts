@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { CommonService } from '../services/common.service';
+import { CustomValidators } from '../services/validation.service';
 
 @Component({
   selector: 'app-login',
@@ -8,12 +9,17 @@ import { CommonService } from '../services/common.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  @ViewChild('username', {static: true}) userNameControl: any;
+  @ViewChild('password', {static: true}) passwordControl: any;
   loginErr:string = '';
   loader:boolean = false;
-  constructor(private router: Router, private commonService: CommonService) { }
+  constructor(private router: Router, private commonService: CommonService, private validations: CustomValidators) { }
 
   ngOnInit(): void {
+    this.userNameControl.control.setValidators(this.validations.whiteSpaceValidator());
+    this.passwordControl.control.setValidators(this.validations.whiteSpaceValidator());
   }
+
   loginSubmit(form){
     this.loginErr = '';
     if(form.valid){

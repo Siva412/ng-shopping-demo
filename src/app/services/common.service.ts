@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Subject, BehaviorSubject } from 'rxjs'
+import { filter } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { URL } from '../../environments/environment';
 
@@ -14,7 +15,7 @@ export class CommonService {
     public purchaseItems: any = [];
     private loginFlag: boolean = false;
     private loginSubject = new Subject();
-    private searchSubject = new BehaviorSubject('');
+    private searchSubject = new BehaviorSubject({propagate: true, value: ''});
     public userInfo: any;
     public navigateTo: string = '';
     onServiceLoad() {
@@ -96,12 +97,9 @@ export class CommonService {
         this.loginSubject.next(this.loginFlag);
     }
     getSearchObs(){
-        return this.searchSubject.asObservable();
+        return this.searchSubject.asObservable().pipe(filter(data => data.propagate));
     }
     getSearchSubject(){
         return this.searchSubject;
-    }
-    resetSearchSubject(){
-        this.searchSubject = new BehaviorSubject('');
     }
 }

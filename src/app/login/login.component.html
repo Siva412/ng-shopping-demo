@@ -4,13 +4,15 @@
             <form #loginForm="ngForm" (ngSubmit)="loginSubmit(loginForm)">
                 <mat-form-field class="login-form-field">
                     <mat-label>Username</mat-label>
-                    <input type="text" name="username" matInput ngModel #username="ngModel" required />
+                    <input type="text" name="username" matInput ngModel #username="ngModel" required whitespaceValidator />
                     <mat-error *ngIf="username?.errors?.required">Please enter username</mat-error>
+                    <mat-error *ngIf="username?.errors?.whiteSpace">Only spaces are not allowed</mat-error>
                 </mat-form-field>
                 <mat-form-field class="login-form-field">
                     <mat-label>Password</mat-label>
-                    <input type="password" name="password" matInput ngModel #password="ngModel" required />
+                    <input type="password" name="password" matInput ngModel #password="ngModel" required whitespaceValidator />
                     <mat-error *ngIf="password?.errors?.required">Please enter password</mat-error>
+                    <mat-error *ngIf="password?.errors?.whiteSpace">Only spaces are not allowed</mat-error>
                 </mat-form-field>
                 <button mat-raised-button color="primary">Login</button>
             </form>

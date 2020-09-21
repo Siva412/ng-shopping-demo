@@ -11,6 +11,7 @@
                             <span *ngIf="regForm.get('firstName').errors?.required">Please enter First name</span>
                             <span *ngIf="regForm.get('firstName').errors?.pattern">Please enter alphanumeric</span>
                             <span *ngIf="regForm.get('firstName').errors?.maxlength">Please enter less than 40 characters</span>
+                            <span *ngIf="regForm.get('firstName').errors?.whiteSpace">Only spaces are not allowed</span>
                         </mat-error>
                     </mat-form-field>
                     <mat-form-field class="register-form-field col-md-6 col-xs-12">
@@ -19,6 +20,7 @@
                         <mat-error>
                             <span *ngIf="regForm.get('lastName').errors?.pattern">Please enter alphanumeric</span>
                             <span *ngIf="regForm.get('lastName').errors?.maxlength">Please enter less than 40 characters</span>
+                            <span *ngIf="regForm.get('lastName').errors?.whiteSpace">Only spaces are not allowed</span>
                         </mat-error>
                     </mat-form-field>
                     <mat-form-field class="register-form-field col-md-6 col-xs-12">
@@ -27,6 +29,7 @@
                         <mat-error>
                             <span *ngIf="regForm.get('email').errors?.required">Please enter Email</span>
                             <span *ngIf="regForm.get('email').errors?.email">Please enter a valid email</span>
+                            <span *ngIf="regForm.get('email').errors?.whiteSpace">Only spaces are not allowed</span>
                         </mat-error>
                     </mat-form-field>
                     <mat-form-field class="register-form-field col-md-6 col-xs-12">
@@ -36,16 +39,18 @@
                         <mat-error>
                             <span *ngIf="regForm.get('mobile').errors?.required">Please enter a mobile number</span>
                             <span *ngIf="regForm.get('mobile').errors?.pattern">Please enter a valid mobile number</span>
+                            <span *ngIf="regForm.get('mobile').errors?.whiteSpace">Only spaces are not allowed</span>
                         </mat-error>
                     </mat-form-field>
                     <mat-form-field class="register-form-field col-md-6 col-xs-12">
                         <mat-label>Password</mat-label>
                         <input [type]="hide?'password':'text'" formControlName="password" matInput />
                         <mat-icon matSuffix (click)="hide=!hide" class="csrptr">{{hide?'visibility_off':'visibility'}}</mat-icon>
-                        <mat-hint *ngIf="regForm.get('password').pristine">Password should contain atleast one Uppercase, Lowercase and number with minimum 8 characters</mat-hint>
+                        <mat-hint *ngIf="regForm.get('password').pristine">Password should contain atleast one Uppercase, Lowercase, Special and Number with minimum 8 characters</mat-hint>
                         <mat-error>
                             <span *ngIf="regForm.get('password').errors?.required">Please enter password</span>
-                            <span *ngIf="regForm.get('password').errors?.pattern">Password should contain atleast Uppercase, Lowercase and number with minimum 8 characters</span>
+                            <span *ngIf="regForm.get('password').errors?.pattern">Password should contain atleast Uppercase, Lowercase, Special and Number with minimum 8 characters</span>
+                            <span *ngIf="regForm.get('password').errors?.whiteSpace">Only spaces are not allowed</span>
                         </mat-error>
                     </mat-form-field>
                 </div>

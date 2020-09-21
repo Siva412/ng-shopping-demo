@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CommonService } from '../services/common.service';
-import { Router } from '@angular/router';
+import { CustomValidators } from '../services/validation.service';
 
 @Component({
   selector: 'app-confirm',
@@ -16,16 +17,16 @@ export class ConfirmComponent implements OnInit {
   deliveryCharges: number = 0;
   addressString: string = '';
   loader: boolean = false;
-  constructor(private fb: FormBuilder, private commonService: CommonService, private router: Router) { }
+  constructor(private fb: FormBuilder, private commonService: CommonService, private router: Router, private customValidators: CustomValidators) { }
 
   ngOnInit(): void {
     this.addressForm = this.fb.group({
-      "name": ['', [Validators.required]],
-      "address1": ['', [Validators.required]],
-      "address2": [''],
-      "city": ['', [Validators.required]],
-      "pincode": ['', [Validators.required, Validators.pattern(/^[0-9]{6}$/)]],
-      "mobile": ['', [Validators.required, Validators.pattern(/^[6789]{1}\d{9}$/)]]
+      "name": ['', [Validators.required, this.customValidators.whiteSpaceValidator()]],
+      "address1": ['', [Validators.required, this.customValidators.whiteSpaceValidator()]],
+      "address2": ['', [this.customValidators.whiteSpaceValidator()]],
+      "city": ['', [Validators.required, this.customValidators.whiteSpaceValidator()]],
+      "pincode": ['', [Validators.required, Validators.pattern(/^[0-9]{6}$/), this.customValidators.whiteSpaceValidator()]],
+      "mobile": ['', [Validators.required, Validators.pattern(/^[6789]{1}\d{9}$/), this.customValidators.whiteSpaceValidator()]]
     });
 
     this.paymentForm = this.fb.group({

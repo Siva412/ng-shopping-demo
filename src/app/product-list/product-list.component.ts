@@ -34,9 +34,8 @@ export class ProductListComponent implements OnInit, OnDestroy {
 
     this.searchSubscrpt = this.commonService.getSearchObs().subscribe((data: any) => {
       if (data) {
-        this.searchData({ searchText: data });
-        this.commonService.getSearchSubject().next('');
-        //this.commonService.resetSearchSubject();
+        this.searchData({ searchText: data.value });
+        this.commonService.getSearchSubject().next({propagate: false, value:''});
       }
       else{
         this.onLoadListCall();
