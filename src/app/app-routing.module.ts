@@ -9,6 +9,7 @@ import { CartComponent } from './cart/cart.component';
 import { ConfirmComponent } from './confirm/confirm.component';
 import { OrdersComponent } from './orders/orders.component';
 import { RouteGuard } from './services/routeguard.service';
+import { CanDeactivateComp } from './services/canDeactivate.service-guard';
 
 
 const routes: Routes = [
@@ -23,7 +24,7 @@ const routes: Routes = [
     }]
   },
   { path: 'cart', component: CartComponent },
-  { path: 'register', component: RegisterComponent },
+  { path: 'register', component: RegisterComponent, canDeactivate: [CanDeactivateComp] },
   { path: 'confirm', component: ConfirmComponent, canActivate: [RouteGuard] },
   { path: 'orders', component: OrdersComponent, canActivate: [RouteGuard] },
   { path: '**', component: LoginComponent }

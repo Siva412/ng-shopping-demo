@@ -46,4 +46,10 @@ export class RegisterComponent implements OnInit {
   gotoLogin(){
     this.router.navigate(['']);
   }
+  canDeactivate(){
+    if(this.regForm.dirty){
+      return window.confirm("Discard changes?");
+    }
+    return true;
+  }
 }
